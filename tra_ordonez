@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador</title>
+    <style>
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mi Autobiografía</h1>
+    <input type="text" id="searchInput" placeholder="Buscar en la autobiografía...">
+    <div id="results"></div>
+    <a id="autobiografia">
+        Me considero una persona tranquila y razonable. En mi tiempo libre me
+        gusta jugar videojuegos, ver series y películas. Además, me gusta escuchar
+        música, sobre todo rock y EDM. También disfruto de la literatura; en
+        especial, libros del género de ficción, fantasía y suspenso. Tengo un gran
+        interés por el dibujo y la animación. Me gusta dibujar, aunque solo me lo
+        tomo como un pasatiempo.
+
+        Me considero una persona tranquila y razonable. En mi tiempo libre me
+        gusta jugar videojuegos, ver series y películas. Además, me gusta escuchar
+        música, sobre todo rock y EDM. También disfruto de la literatura; en
+        especial, libros del género de ficción, fantasía y suspenso. Tengo un gran
+        interés por el dibujo y la animación. Me gusta dibujar, aunque solo me lo
+        tomo como un pasatiempo.
+
+        Me considero una persona tranquila y razonable. En mi tiempo libre me
+        gusta jugar videojuegos, ver series y películas. Además, me gusta escuchar
+        música, sobre todo rock y EDM. También disfruto de la literatura; en
+        especial, libros del género de ficción, fantasía y suspenso. Tengo un gran
+        interés por el dibujo y la animación. Me gusta dibujar, aunque solo me lo
+        tomo como un pasatiempo.
+
+        web
+    </a>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const autobiography = document.getElementById('autobiografia');
+        const resultsContainer = document.getElementById('results');
+
+        searchInput.addEventListener('input', function() {
+            const searchText = this.value.trim().toLowerCase();
+            const textToSearch = autobiography.textContent.toLowerCase();
+
+            if (searchText.length === 0) {
+                resultsContainer.innerHTML = ''; 
+                return;
+            }
+
+            const regex = new RegExp(searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+            const highlightedText = textToSearch.replace(regex, '<mark>$&</mark>');
+
+            resultsContainer.innerHTML = highlightedText;
+        });
+    </script>
+</body>
+</html>
